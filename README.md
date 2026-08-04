@@ -36,7 +36,7 @@ A complete hardware reverse-engineering walk-through detailing how I dumped the 
     ├── root_shell_spawn.png
     ├── jtagulator_help_menu.png
     ├── jtagulator_validation_error.png
-    └── jtagulator_active_scan_failed.png
+    └── jtagulator_active_scan.png
     
 ```
 ## ⚡ Executive Summary of the Attack Workflow
