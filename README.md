@@ -1,6 +1,6 @@
-# 🛠️ Router Live Firmware Extraction via UART & Jtagulator
+# 🛠️ Hardware Recon and UART Console Access on the TP-Link TL-WR845N
 
-A complete hardware reverse-engineering walk-through detailing how I dumped the live firmware and extracted an unauthenticated root shell from a **TP-Link TL-WR845N (v4.0)** router. This project covers manual multimeter probing, CP2102 USB-to-TTL interfacing, and automated pin verification using the **Jtagulator**.
+A complete hardware reverse-engineering walk-through detailing how I accessed the live firmware and extracted an unauthenticated root shell from a **TP-Link TL-WR845N (v4.0)** router. This project covers manual multimeter probing, CP2102 USB-to-TTL interfacing, and automated pin verification using the **Jtagulator**.
 
 ![Target Router PCB Front View](images/router_front.jpeg)
 
@@ -40,7 +40,7 @@ A complete hardware reverse-engineering walk-through detailing how I dumped the 
     └── jtagulator_active_scan.png
     
 ```
-## ⚡ Executive Summary of the Attack Workflow
+## ⚡ Workflow
 * **Architecture & Board Mapping**: Identified the SoC, SDRAM, and SPI Flash chips on the PCB.
 
 * **Manual Pinout Profiling**: Located GND via DMM continuity testing, mapped TX using voltage boot-fluctuation testing, identified RX at static 0V, and isolated VCC at 3.3V.
