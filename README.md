@@ -1,6 +1,6 @@
 # 🛠️ Hardware Recon and UART Console Access on the TP-Link TL-WR845N
 
-A complete hardware reverse-engineering walk-through detailing how I accessed the live firmware and extracted an unauthenticated root shell from a **TP-Link TL-WR845N (v4.0)** router. This project covers manual multimeter probing, CP2102 USB-to-TTL interfacing, and automated pin verification using the **Jtagulator**.
+A complete hardware reconnaissance walk-through detailing how I accessed the live firmware and extracted an unauthenticated root shell from a **TP-Link TL-WR845N (v4.0)** router. This project covers manual multimeter probing, CP2102 USB-to-TTL interfacing, and automated pin verification using the **Jtagulator**.
 
 ![Target Router PCB Front View](images/router_front.jpeg)
 
