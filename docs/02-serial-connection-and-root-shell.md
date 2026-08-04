@@ -42,8 +42,11 @@ Powering on the router immediately streamed the U-Boot bootloader initialization
 
 
 
+
 Immediately following the bootloader, the Linux kernel initialized, loaded its hardware drivers, and transferred execution control to the OS.
+
 ![Kernel Boot Logs](../images/kernel_boot_logs.png)
+
 
 ## 4. Flash Partition Mapping (MTD Table)
 As the kernel finished loading, it exposed the system's exact Memory Technology Device (MTD) allocation map. Capturing this map is crucial as it reveals the precise memory offsets and sizes of the boot, kernel, and rootfs (SquashFS) partitions for later extraction.
