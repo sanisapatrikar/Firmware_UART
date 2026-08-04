@@ -1,5 +1,5 @@
 ### `docs/01-concepts-and-hardware-recon.md`
-```markdown
+
 # 01. Concepts, Hardware Reconnaissance & Pin Discovery
 
 Before attaching logic tools or terminal consoles, I mapped out the system architecture and identified the physical pins on the circuit board.
@@ -69,8 +69,11 @@ I spotted an unpopulated 4-pin serial header adjacent to the SoC. To figure out 
    (GND)          (VCC)           (TX)           (RX)
    ```
 * **Finding Ground (GND)**: Set the DMM to Continuity / Beep Mode. Placed one probe on the outer metal shield of an Ethernet port and probed the pads. Pad 1 emitted a continuous beep, so, GND.
+
 * **Finding VCC (Power)**: Set the DMM to DC Voltage Mode and powered on the router. Pad 2 held a static 3.3V, showing zero voltage drop during boot up, so, VCC.
+
 * **Finding TX (Transmit)**: Kept the black probe on GND, placed the red probe on Pad 3, and power-cycled the router. While watching the screen during the first 10 seconds of boot, the reading twitched wildly between 2.8V and 3.3V as the CPU dumped text boot logs, so, TX.
+
 * **Finding RX (Receive)**: Pad 4 sat static at 0V, acting as an open input line waiting for external serial commands, so that's RX.
 
-⚠️ CRITICAL POWER ISOLATION RULE:NEVER connect the VCC pin of a USB-to-TTL adapter to a device that is already powered by a wall adapter. Both power sources will fight, creating a back-feed loop that can fry your CP2102 module, the router's main processor, or your laptop's USB controller port. Connect GND, TX, and RX only.5. Voltage Translation (USB-to-TTL)Laptops communicate via USB signaling standards, while router SoCs communicate using Transistor-Transistor Logic (TTL) voltage levels ($0\text{V}$ for binary 0, $3.3\text{V}$ for binary 1). The CP2102 USB-to-TTL Bridge acts as an inline translator between these two voltage domains.
+⚠️ **CRITICAL POWER ISOLATION RULE**:NEVER connect the VCC pin of a USB-to-TTL adapter to a device that is already powered by a wall adapter. Both power sources will fight, creating a back-feed loop that can fry your CP2102 module, the router's main processor, or your laptop's USB controller port. Connect GND, TX, and RX only.5. Voltage Translation (USB-to-TTL)Laptops communicate via USB signaling standards, while router SoCs communicate using Transistor-Transistor Logic (TTL) voltage levels ($0\text{V}$ for binary 0, $3.3\text{V}$ for binary 1). The CP2102 USB-to-TTL Bridge acts as an inline translator between these two voltage domains.
