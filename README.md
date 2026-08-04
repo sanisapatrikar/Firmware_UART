@@ -30,6 +30,7 @@ A complete hardware reverse-engineering walk-through detailing how I dumped the 
     ├── router_front.jpeg
     ├── router_back.jpeg
     ├── usb_to_ttl.jpeg
+    ├── router_full_setup.jpeg
     ├── uboot_boot_logs.png
     ├── kernel_boot_logs.png
     ├── mtd_partition_map.png
