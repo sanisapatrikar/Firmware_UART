@@ -51,6 +51,9 @@ Immediately following the bootloader, the Linux kernel initialized, loaded its h
 ## 4. Flash Partition Mapping (MTD Table)
 As the kernel finished loading, it exposed the system's exact Memory Technology Device (MTD) allocation map. Capturing this map is crucial as it reveals the precise memory offsets and sizes of the boot, kernel, and rootfs (SquashFS) partitions for later extraction.
 
+![MTD Partition Table](../images/mtd_partition_map.png)
+
+
 ## 5. Obtaining Unauthenticated Root Shell Access
 At the conclusion of the boot process, the kernel executed the startup scripts (/etc/init.d/rcS). Instead of spawning a login prompt asking for user credentials, the serial terminal initialized an unrestricted root shell directly onto the serial interface:
 
