@@ -62,4 +62,6 @@ Read the step-by-step logs in the docs/ folder:
 
 03. **Jtagulator Verification & Passthrough** – Automated pin verification, debugging CLI parser bugs, active U vs. passive T scans, and UART passthrough (P) mode.
 
-Maintained by [Sanisa Patrikar]
+## Companion Reading
+This project also has a companion publication on iotsec.in:
+https://iotsec.in/t/whispers-on-the-wire-from-copper-pads-to-a-live-uart-root-shell/86
