@@ -41,9 +41,9 @@ Entering a capitalized Y at the prompt Ignore non-printable characters? [Y/n]: c
 Resolution: The CLI parser expects plain lowercase y or n inputs.
 
 * **Issue 2**: Active Scan (U Mode) Configuration Failure
-Configuring the U (active UART scan) command requires stepping through several parameters — channel range, known pins, output string, response delay, and optional LOW-drive behavior before scanning begins. During this configuration sequence, the JTAGulator rejected one of my inputs with Value out of range!, aborting the scan before it ever reached the "press spacebar to begin" step. 
+Configuring the U (active UART scan) command requires stepping through several parameters; channel range, known pins, output string, response delay, and optional LOW-drive behavior before scanning begins. During this configuration sequence, the JTAGulator rejected one of my inputs with Value out of range!, aborting the scan before it ever reached the "press spacebar to begin" step. 
 
-* Because the scan aborted during configuration, it never sent a single byte to the target — so any baud-rate or payload-formatting mismatch is a moot question; the failure was a CLI input issue, not a communication issue.
+* Because the scan aborted during configuration, it never sent a single byte to the target, so any baud-rate or payload-formatting mismatch is a moot question; the failure was a CLI input issue, not a communication issue.
 
 * Another possible reason why active scanning could fail was the payload Formatting. While Windows targets expect Carriage Returns (\x0D), embedded Linux environments require a true Newline character (\x0A) to trigger shell command execution.
 
