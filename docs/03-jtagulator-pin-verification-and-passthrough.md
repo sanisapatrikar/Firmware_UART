@@ -34,20 +34,18 @@ It is critical to remember that two separate serial connections operate concurre
 
 ## 3. Debugging CLI Errors & Active Scan Failures
 * **Issue 1**: Terminal Parser Validation Bug
-Entering a capitalized Y at the prompt Ignore non-printable characters? [Y/n]: crashed the configuration routine.
+Entering a capitalized Y at the prompt Ignore non-printable characters? [Y/n]: crashed the configuration routine (oops).
 
 ![Jtagulator Validation Error](../images/jtagulator_validation_error.png)
 
 Resolution: The CLI parser expects plain lowercase y or n inputs.
 
-* **Issue 2**: Active Scan (U Mode) Configuration
-When setting up the active U (UART Scan) command, we have to carefully configure the target inputs. Here is the scan configuration attempting to find the device:
+* **Issue 2**: Active Scan (U Mode) Configuration Failure
+Configuring the U (active UART scan) command requires stepping through several parameters — channel range, known pins, output string, response delay, and optional LOW-drive behavior before scanning begins. During this configuration sequence, the JTAGulator rejected one of my inputs with Value out of range!, aborting the scan before it ever reached the "press spacebar to begin" step. 
 
-Why Active Scanning Can Fail on Routers:
+* Because the scan aborted during configuration, it never sent a single byte to the target — so any baud-rate or payload-formatting mismatch is a moot question; the failure was a CLI input issue, not a communication issue.
 
-Single Baud Rate Limit: The Jtagulator tests at its single default internal testing speed (9600 baud). Because the router was listening at 115200 baud, the test signal gets ignored.
-
-Payload Formatting: While Windows targets expect Carriage Returns (\x0D), embedded Linux environments require a true Newline character (\x0A) to trigger shell command execution.
+* Another possible reason why active scanning could fail was the payload Formatting. While Windows targets expect Carriage Returns (\x0D), embedded Linux environments require a true Newline character (\x0A) to trigger shell command execution.
 
 ## 4. Passive Listening (T Mode) - The Reliable Solution
 Instead of sending active bytes, the T command (Identify UART pinout - TXD only, continuous) acts as a passive digital scope.
@@ -85,9 +83,9 @@ By bridging the connection natively through the Jtagulator, I was piped directly
 
 Local Echo: Kept OFF. Linux shells automatically echo typed characters back to the console. Enabling Local Echo in PuTTY results in double-character typing errors (hheellpp).
 
-Exit Shortcut: Pressing Ctrl + Z breaks the passthrough tunnel and returns control to the Jtagulator master menu.
+Exit Shortcut: Pressing Ctrl + X breaks the passthrough tunnel and returns control to the Jtagulator master menu.
 
-# 📑 Optimized Parameter Reference Map for UART Scans
+# 📑 Parameter References for UART Scans
 | Configuration Parameter | Value | Engineering Rationale |
 | :--- | :--- | :--- |
 | **Output Text String** | `\x0A` | Linux Line Feed (LF) byte to execute empty commands on Unix shells. |
